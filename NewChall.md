@@ -2,7 +2,7 @@
 - Author: dcthinh
 - Type: blackbox
 
-# Recon
+# Exploit
 - Dựa vào challenge description thì mình thấy rằng khi truy cập vào web, ta có thể thực hiện các phép toán cơ bản ở endpoint *exec* với tham số là *q*.
 - Khi thử thực thi các đoạn mã javascript như require hay exec thì web trả về message thông báo đại loại kiểu *Are you hacking?* nên mình khá chắc rằng phía server đang thực thi input người dùng bằng một hàm thực thi như eval()
 - Mình tiếp tục fuzz bằng cách dùng keyword *import* được encode thành octal (mục tiêu là import được một module gì đó như là *child_process*). Khi này thì server trả về lỗi *Cannot use import statement outside a module*. Lỗi này xuất hiện do phía server dùng NodeJS làm backend (CommonJS), trong khi import chỉ nên được dùng khi mã JS được viểt ở định dạng ECMAScript.
